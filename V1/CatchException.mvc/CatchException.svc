@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="CatcheException.Wcf.CatchException" CodeBehind="CatchException.svc.cs" %>
