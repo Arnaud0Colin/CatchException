@@ -16,7 +16,7 @@ catch (Exception ex)
 CatchMe.WriteMessage("Service Shutdown").Where().Write<LogSmtp>();
 ```
 
-![CatchException](..\CatchException.jpg)
+![CatchException](CatchException.jpg)
 
 How Configure Smtp module :
 ```sh
