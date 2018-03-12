@@ -4,10 +4,10 @@ CatchException (Manage Exception c#)
 The library capable to catch Unhandled exception and write exception on logging file, in database and by email. Can also Write a trace file, Dump object.
 
 I made this module to facilitate bug hunting, be really proactive, corrected the error before the user does not call you to report the problem.
-This program has basically made for enterprise who developer software internally
+This program has basically made for enterprise who developer software internal##ly
 
-Example call WriteException
-```sh
+## Example call WriteException
+```c#
 catch (Exception ex)
 {
     CatchMe.WriteException(ex).Where().Write();
@@ -18,8 +18,8 @@ CatchMe.WriteMessage("Service Shutdown").Where().Write<LogSmtp>();
 
 ![CatchException](CatchException.jpg)
 
-How Configure Smtp module :
-```sh
+##How Configure Smtp module :
+```c#
   public static void InitSmtp()
         {
             SmtpInfo smtpInfo = new SmtpInfo();
@@ -32,9 +32,9 @@ How Configure Smtp module :
         }
 ```
 
-Code to put in the Main procedure :
-```sh
-   static void Main()
+##Code to put in the Main procedure :
+```c#
+static void Main()
         {
       /* Inisilize the logfile module*/
       LogFile.Fichier = CatchMe.ApplicationPath + @"\" + CatchMe.ProcessName + @".html";
@@ -66,8 +66,8 @@ Code to put in the Main procedure :
         }
 ```
 
-You can also Dump Object
-```sh
+##You can also Dump Object
+```c#
 private void button1_Click(object sender, EventArgs e)
 {         
    string s =  DumpObject.Dump(e, 0);
@@ -75,7 +75,7 @@ private void button1_Click(object sender, EventArgs e)
 ```
 
 EvenArgs
-```sh
+```
 [MouseButtons] Button : 
  	[Int32] value__ : 1048576 
  
@@ -89,8 +89,8 @@ EvenArgs
 	[Int32] Y : 9 
 ```
 
-If you AllowDump catchexception zip the dump file and put in the html file.
-```sh
+##If you AllowDump catchexception zip the dump file and put in the html file.
+```c#
 <tr> 
 <td align='left' bgcolor='#eeeeec' colspan='1' >EventArgs</td><td align='left' bgcolor='#eeeeec' colspan='1' >EventArgs</td><td align='left' bgcolor='#eeeeec' colspan='1' >System.Windows.Forms.MouseEventArgs
 <a href="data:application/zip;base64,H4sIAAAAAAAEAO29B2AcSZYlJi9tynt/SvVK1+B0oQiAYBMk2JBAEOzBiM3mkuwdaUcjKasqgcplVmVdZhZAzO2dvPfee++999577733ujudTif33/8/XGZkAWz2zkrayZ4hgKrIHz9+fB8/Ir73RbVu8ifrtq2WzfdT+SV9lD6e1HeP0l+4nDSrw++dLdt7e99PL7Nynf/+vz99u7uzf3D/wafaiv81jU7KYvq2QZvw89+bPtrTN8xnvw+addo9zcs2o8939OOXVbFsv58+r6ZZW/RRe1JVZZ4tv5+eNaeLVXtN3z/LyiaXViH+PgrhNz4i8u//A436NfkYAQAA"/>
@@ -98,8 +98,8 @@ If you AllowDump catchexception zip the dump file and put in the html file.
 </tr> 
 ```
 
-Using Trace
-```sh
+##Using Trace
+```c#
  /* Inisilize the TraceFile module*/
    TraceFile.Fichier = CatchMe.ApplicationPath + @"\" + CatchMe.ProcessName + @".Txt";
    TraceFile.Level =3;
