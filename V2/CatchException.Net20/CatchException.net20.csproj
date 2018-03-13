@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F0D44B88-DFBC-48FD-A8AC-6C0AD013E73A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CatchException</RootNamespace>
+    <AssemblyName>CatchException.NET20</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\CatchException.NET20\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\CatchException.NET20\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\Commun\CatchException.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.ServiceModel">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.ServiceModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CatchException\Smtp\MailMessageExt.cs">
+      <Link>Smtp\MailMessageExt.cs</Link>
+    </Compile>
+    <Compile Include="..\CatchException\Smtp\MessageSmtp.cs">
+      <Link>Smtp\MessageSmtp.cs</Link>
+    </Compile>
+    <Compile Include="..\CatchException\Smtp\NotificationSmtp.cs">
+      <Link>Smtp\NotificationSmtp.cs</Link>
+    </Compile>
+    <Compile Include="..\CatchException\Smtp\ServeurInfo.cs">
+      <Link>Smtp\ServeurInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Engine.cs">
+      <Link>CatchMe\CatchMe.Engine.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Ext.cs">
+      <Link>CatchMe\CatchMe.Ext.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Html.cs">
+      <Link>CatchMe\CatchMe.Html.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.OutPut.cs">
+      <Link>CatchMe\CatchMe.OutPut.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Unhandled.cs">
+      <Link>CatchMe\CatchMe.Unhandled.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Variable.cs">
+      <Link>CatchMe\CatchMe.Variable.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Wcf.cs">
+      <Link>CatchMe\CatchMe.Wcf.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\ConfigGeneric.cs">
+      <Link>Config\ConfigGeneric.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\Dump.cs">
+      <Link>Dump.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\ExceptionDialog.cs">
+      <Link>Form\ExceptionDialog.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\Commun\ExceptionDialog.Designer.cs">
+      <Link>Form\ExceptionDialog.Designer.cs</Link>
+      <DependentUpon>ExceptionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Commun\FilterMessage.cs">
+      <Link>Tools\FilterMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\HtmlBuilder.cs">
+      <Link>Tools\HtmlBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\ScreenShot.cs">
+      <Link>Tools\ScreenShot.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\Serial.cs">
+      <Link>Tools\Serial.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\Serialization.cs">
+      <Link>Serialization\Serialization.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\Serialization.Extension.cs">
+      <Link>Serialization\Serialization.Extension.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\StringElement.cs">
+      <Link>Tools\StringElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\TraceFile.cs">
+      <Link>File\TraceFile.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\TypeExt.cs">
+      <Link>TypeExt.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\XmlNodeExtention.cs">
+      <Link>Serialization\XmlNodeExtention.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\Zip.cs">
+      <Link>File\Zip.cs</Link>
+    </Compile>
+    <Compile Include="Compatibility.cs" />
+    <Compile Include="Compatibilityz.cs" />
+    <Compile Include="HashSet.cs" />
+    <Compile Include="HttpUtility.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WebCatchException\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Commun\CatchException.snk">
+      <Link>CatchException.snk</Link>
+    </None>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WebCatchException\CatchException.wsdl" />
+    <None Include="Web References\WebCatchException\CatchException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WebCatchException\CatchException0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WebCatchException\CatchException1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\WebCatchException\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Commun\ExceptionDialog.resx">
+      <Link>Form\ExceptionDialog.resx</Link>
+      <DependentUpon>ExceptionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:2010/CatchException.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WebCatchException\</RelPath>
+      <UpdateFromURL>http://localhost:2010/CatchException.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CatchException_NET20_WebCatchException_CatchException</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WebCatchException\CatchException.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

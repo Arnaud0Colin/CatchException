@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8ac64359-7194-4596-993d-e30c5bfc017a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2010/CatchException.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CatchException.xsd" MetadataType="Schema" ID="19f0b130-01cc-43b6-a26b-d6901be1519c" SourceId="1" SourceUrl="http://localhost:2010/CatchException.svc?xsd=xsd2" />
+    <MetadataFile FileName="CatchException.wsdl" MetadataType="Wsdl" ID="faba8da9-ea39-43ac-b78c-29d3abaa8fe8" SourceId="1" SourceUrl="http://localhost:2010/CatchException.svc?wsdl" />
+    <MetadataFile FileName="CatchException1.xsd" MetadataType="Schema" ID="a20218a6-9269-4cf8-814d-0f17464fb72e" SourceId="1" SourceUrl="http://localhost:2010/CatchException.svc?xsd=xsd0" />
+    <MetadataFile FileName="CatchException2.xsd" MetadataType="Schema" ID="35cba5dc-408e-4812-af7e-8340f5260458" SourceId="1" SourceUrl="http://localhost:2010/CatchException.svc?xsd=xsd1" />
+    <MetadataFile FileName="CatchException.disco" MetadataType="Disco" ID="3510eaa3-b870-4d54-b2bb-302ed8ea24e5" SourceId="1" SourceUrl="http://localhost:2010/CatchException.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

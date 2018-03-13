@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{25729AE4-9DC9-4460-849A-65D4F792DDB5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CatchException</RootNamespace>
+    <AssemblyName>CatchException.NET35</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\CatchException.NET35\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET35</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\CatchException.NET35\</OutputPath>
+    <DefineConstants>TRACE;NET35</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\Commun\CatchException.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CatchException\Smtp\IParamMail.cs">
+      <Link>Smtp\IParamMail.cs</Link>
+    </Compile>
+    <Compile Include="..\CatchException\Smtp\MailMessageExt.cs">
+      <Link>Smtp\MailMessageExt.cs</Link>
+    </Compile>
+    <Compile Include="..\CatchException\Smtp\MessageSmtp.cs">
+      <Link>Smtp\MessageSmtp.cs</Link>
+    </Compile>
+    <Compile Include="..\CatchException\Smtp\NotificationSmtp.cs">
+      <Link>Smtp\NotificationSmtp.cs</Link>
+    </Compile>
+    <Compile Include="..\CatchException\Smtp\ServeurInfo.cs">
+      <Link>Smtp\ServeurInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Engine.cs">
+      <Link>CatchMe\CatchMe.Engine.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Ext.cs">
+      <Link>CatchMe\CatchMe.Ext.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Html.cs">
+      <Link>CatchMe\CatchMe.Html.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.OutPut.cs">
+      <Link>CatchMe\CatchMe.OutPut.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Unhandled.cs">
+      <Link>CatchMe\CatchMe.Unhandled.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Variable.cs">
+      <Link>CatchMe\CatchMe.Variable.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\CatchMe.Wcf.cs">
+      <Link>CatchMe\CatchMe.Wcf.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\ConfigGeneric.cs">
+      <Link>Config\ConfigGeneric.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\Dump.cs">
+      <Link>Dump.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\ExceptionDialog.cs">
+      <Link>Form\ExceptionDialog.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\Commun\ExceptionDialog.Designer.cs">
+      <Link>Form\ExceptionDialog.Designer.cs</Link>
+      <DependentUpon>ExceptionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Commun\FilterMessage.cs">
+      <Link>Tools\FilterMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\HSLColor.cs">
+      <Link>Tools\HSLColor.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\HtmlBuilder.cs">
+      <Link>Tools\HtmlBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\ScreenShot.cs">
+      <Link>Tools\ScreenShot.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\Serial.cs">
+      <Link>Tools\Serial.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\Serialization.cs">
+      <Link>Serialization\Serialization.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\Serialization.Extension.cs">
+      <Link>Serialization\Serialization.Extension.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\StringElement.cs">
+      <Link>Tools\StringElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\TraceFile.cs">
+      <Link>File\TraceFile.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\TypeExt.cs">
+      <Link>TypeExt.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\XmlNodeExtention.cs">
+      <Link>Serialization\XmlNodeExtention.cs</Link>
+    </Compile>
+    <Compile Include="..\Commun\Zip.cs">
+      <Link>File\Zip.cs</Link>
+    </Compile>
+    <Compile Include="Service References\WebCatchException\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Commun\CatchException.snk">
+      <Link>CatchException.snk</Link>
+    </None>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebCatchException\CatchException.wsdl" />
+    <None Include="Service References\WebCatchException\CatchException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebCatchException\CatchException1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebCatchException\CatchException2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Commun\ExceptionDialog.resx">
+      <Link>Form\ExceptionDialog.resx</Link>
+      <DependentUpon>ExceptionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WebCatchException\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebCatchException\CatchException.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebCatchException\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebCatchException\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebCatchException\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
