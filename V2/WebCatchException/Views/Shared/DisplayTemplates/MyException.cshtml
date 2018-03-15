@@ -1,0 +1,13 @@
+﻿@model MyException
+
+
+@Model.sourceFilePath
+
+
+@Model._Excep.FirstOrDefault().StackTrace
+
+
+@if (!string.IsNullOrWhiteSpace(Model.bitmap))
+{
+    <img src='data:image/gif;base64,@Model.bitmap' />
+}

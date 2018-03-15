@@ -1,0 +1,78 @@
+﻿$Divwidth: 300px;
+$FontContenue: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$FontTitre: Calibri;
+$BackColorEntete: black;
+
+
+.underline{
+     
+        BORDER-BOTTOM: black 2px solid;
+      
+}
+ #imageresource {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ .MargTop{
+     margin-top:35px;
+ }
+
+
+@function set-text-color($idx) {
+   
+        @if ($idx == -1) 
+   {
+       @return rgba(227, 227, 227, 1);
+               }
+  @else if ($idx == 0) 
+   {
+       @return #cc0000;
+               }
+     @else if ($idx == 1) 
+   {
+       @return #cc0000;
+               }
+   @else if ($idx == 2) 
+     {
+         @return #00CC00;
+                 }
+   @else
+   {
+        @return #0000FF;
+                }
+                
+
+}
+
+.Urgence {
+      .panel-heading {
+        color: set-text-color(-1);
+        background-color:  set-text-color(-1);
+        border-color:   set-text-color(-1);
+        }
+        border-color: set-text-color(-1);      
+    }
+
+@for $i from 1 through 8 {
+          
+    .Urgence#{$i} {
+      .panel-heading {
+        color: set-text-color($i);
+        background-color:  set-text-color($i);
+        border-color:   set-text-color($i);
+        }
+        border-color: set-text-color($i);      
+    }
+}
+
+
+
+
+
+
+
+
+
+

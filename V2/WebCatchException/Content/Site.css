@@ -1,0 +1,67 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+.wpx150{
+    width:150px;
+    float: left;
+    margin-right: 10px
+}
+
+.wpx120{
+    width:120px;
+    float: left;
+    margin-right: 10px
+}
+
+.mpx50
+{
+    margin-right: 50px
+}
+
+.w100{
+    width:100%;
+}
+
+.w7{
+    width:7%;
+}
+
+.Vignette {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.Vignette .panel-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 72px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 20px;
+    padding-top: 10px;
+    letter-spacing: -0.8px;
+}
+
+
+
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}

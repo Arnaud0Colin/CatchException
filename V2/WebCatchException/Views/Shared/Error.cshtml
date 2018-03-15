@@ -1,0 +1,37 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Erreur";
+}
+
+<h2>Vous venez de rencontrer une difficulté technique  .. </h2>
+
+<div>
+
+</div>
+
+<div id="errorMessage">
+    <div class="form-group text-danger">
+        <p> L'erreur serveur suivante s’est produite lors du traitement de la requête :  </p>
+        <div>
+            @if (Model.Exception is ArgumentException)
+            {
+                <p> Cette page n'est malheuresement pas disponible.  </p>
+            }
+            else
+            {
+                @Model.Exception.Message
+            }
+        </div>
+    </div>
+
+    <p>Si votre difficulté persiste merci de contacter la hotline.</p>
+</div>
+
+@Html.ActionLink("Retourner sur la page précédente", null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
+@Html.Display("|")
+
+@Html.ActionLink("Page d'accueil", "index", "Accueil", null, new { @class = "control-label" })
+
+
+

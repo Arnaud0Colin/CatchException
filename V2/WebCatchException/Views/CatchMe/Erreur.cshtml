@@ -1,0 +1,78 @@
+﻿@model WebCatchException.Models.CatchMe_Exception
+
+@{
+
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div >
+        @Html.DisplayFor(model => model)
+    </div>
+
+
+    if (Model.GetNextStatus != null && Model.GetNextStatus.Any())
+    {
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CodeStatus, new { @class = "control-label col-md-offset-4 col-md-1" })
+        <div class="col-md-4  FormLabel">
+            @Html.DropDownListFor(model => model.CodeStatus, Model.ChargeStatus, "-- Choisir un Statut --", new { @id = "CodeStatus" })
+            @Html.ValidationMessageFor(model => model.CodeStatus)
+        </div>
+    </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Commentaire, new { @class = "control-label col-md-2" })
+            <div class="col-md-10  FormLabel">
+                @Html.TextAreaFor(model => model.Commentaire, new { @class = "form-control", @placeholder = "un Commentaire" })
+                @Html.ValidationMessageFor(model => model.Commentaire)
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <div class="row MargTop">
+            <div class="col-md-offset-1  col-md-4">
+                <a href="@ViewBag.PreviousUrl">Revenir à la liste</a>
+            </div>
+            <div class="col-md-4">
+                <input type="submit" value="Valider" class="btn btn-warning" />
+            </div>
+        </div>
+     </div>
+    }
+
+}
+
+          
+
+@if (ViewBag.Previous != null && ViewBag.Previous != 0)
+{
+<a class="carousel-control left w7" href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), "CatchMe", new { id = ViewBag.Previous })" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+</a>
+}
+
+@if (ViewBag.Next != null && ViewBag.Next != 0)
+{
+
+<a class="carousel-control right w7" href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), "CatchMe", new { id = ViewBag.Next })" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+}
+
+
+@section Scripts {
+    <script lang="fr-fr">
+
+    $("#pop").on("click", function () {
+        $('#imagepreview').attr('src', $('#imageresource').attr('src')); // here asign the image to the modal when the user click the enlarge link
+        $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+    });
+
+
+    </script>
+}
+  

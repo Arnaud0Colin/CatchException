@@ -1,0 +1,150 @@
+﻿@model WebCatchException.Models.CatchMe_Exception
+
+
+
+<div class="ExcptionBox">
+
+    <div style="float: left;">
+            <span style="font-size:25px;" class="badge @(Model.GetStatusColor)">@Html.DisplayFor(Model => Model.CodeCatch)</span>
+        <strong>@Html.DisplayFor(Model => Model.GetLibelleStatus)</strong>
+            @*<span>@Html.DisplayFor(Model => Model.DateStatus)</span>
+            <span>@Html.DisplayFor(Model => Model.LoginStatus)</span>*@
+    </div>
+
+
+            <h2 class="text-center underline">
+                @if (Model.Masquer == true)
+                {
+                    <span style="font-size: 35px" class="glyphicon glyphicon-remove-sign"></span>
+                }
+                @if (Model.Debug)
+                {
+                    <img src="~/Images/glyphicons-361-bug.png" />
+                }
+                @Html.DisplayFor(model => model.Program)
+            </h2>
+
+            <div class="row">
+                <div class="panel Vignette @("Urgence"+Model.UrgenceLevel) wpx150">
+                    <div class="panel-heading">
+                        <h1 class="panel-title text-center">@Html.DisplayFor(model => model.ApplicationId)</h1>
+                    </div>
+                    @*<div class="panel-body text-center zz">
+                        <strong>@Html.DisplayFor(model => model.ApplicationId)</strong>
+                    </div>*@
+                </div>
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="col-md-12">
+                            <strong>Ordinateur</strong>
+                        </div>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.ComputerName)
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="col-md-12">
+                            <strong>Utilisateur</strong>
+                        </div>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.Login)
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="col-md-12">
+                            <strong>Heure de l'exception</strong>
+                        </div>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.Date)  <span class="badge">@Model.GetSpamString</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <dl class="dl-horizontal">
+                        <h3 class="text-center">@Html.DisplayFor(model => model.Program)</h3>
+                        <dt>
+                            Version
+                        </dt>
+                        <dd>
+                            <strong>@Html.DisplayFor(model => model.Version)</strong>
+                        </dd>
+                        <dt>
+                            Date du Build
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.GetBuildTime)
+                        </dd>
+                        <dt>
+                            ProcessName
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ProcessName)
+                        </dd>
+                        <dt>
+                            Method
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Method)
+                        </dd>
+                        <dt>
+                            sourceLineNumber
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.sourceLineNumber)
+                        </dd>
+                        <span>  @Html.DisplayFor(model => model.Path)</span>
+                    </dl>
+                </div>
+
+                <div class="col-md-5">
+
+                    <table class="w100 MargTop">
+                        <tr>
+                            <th class="col-md-2">Variable</th>
+                            <th class="col-md-2">Type</th>
+                            <th class="col-md-8">Value</th>
+                        </tr>
+                        @foreach (var gg in Model.CatchMe_Exception_Variable)
+                        {
+                            @Html.DisplayFor(Model => gg)
+                        }
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+
+
+<div class="">
+    @foreach (var gg in Model.CatchMe_Exception_Detail)
+    {
+        @Html.DisplayFor(Model => gg)
+    }
+</div>
+   
+
+
+
+        <div class="">
+    @foreach (var gg in Model.CatchMe_Exception_Screen)
+            {
+        @Html.DisplayFor(Model => gg)
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+       

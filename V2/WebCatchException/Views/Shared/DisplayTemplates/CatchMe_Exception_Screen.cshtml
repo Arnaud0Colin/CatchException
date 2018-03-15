@@ -1,0 +1,45 @@
+﻿@model WebCatchException.Models.CatchMe_Exception_Screen
+
+
+@*@Html.DisplayFor(Model => Model.Ext)
+@Html.DisplayFor(Model => Model.Mime)*@
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        @*<div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title text-center">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Capture d'écran
+                </a>
+            </h4>
+        </div>*@
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <a href="#" id="pop">
+                    @*<img id="imageresource" src="@Url.Action("Screen", "CatchMe", new { Area = "", id = Model.FileKey })" />*@
+                    <img  id="imageresource" src='data:image/gif;base64,@Model.GetScreen' />
+                    </a>
+</div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog w100">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Image en taille réelle</h4>
+            </div>
+            <div class="modal-body">
+                <img src="" id="imagepreview" >
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+  </div>
+</div>
+
+

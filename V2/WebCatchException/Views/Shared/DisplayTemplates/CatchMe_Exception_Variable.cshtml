@@ -1,0 +1,11 @@
+﻿@model WebCatchException.Models.CatchMe_Exception_Variable
+
+
+<tr>
+    <td>@Html.DisplayFor(Model => Model.Name)</td>
+    <td>@Html.DisplayFor(Model => Model.Type)</td>
+    <td>@Html.Raw(@Model.GetValue)</td>
+</tr>
+
+
+

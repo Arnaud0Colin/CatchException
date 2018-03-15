@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SysAppWindowsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CatchMe_Exception">
+          <Key>
+            <PropertyRef Name="CodeCatch" />
+          </Key>
+          <Property Name="CodeCatch" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" />
+          <Property Name="UrgenceLevel" Type="smallint" />
+          <Property Name="Method" Type="nvarchar" MaxLength="250" />
+          <Property Name="sourceFilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="sourceLineNumber" Type="int" Nullable="false" />
+          <Property Name="CurrentPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProcessName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ComputerName" Type="nvarchar" MaxLength="250" />
+          <Property Name="OsVersion" Type="nvarchar" MaxLength="100" />
+          <Property Name="OsServicePack" Type="nvarchar" MaxLength="100" />
+          <Property Name="OsPlatform" Type="nvarchar" MaxLength="100" />
+          <Property Name="Login" Type="nvarchar" MaxLength="100" />
+          <Property Name="SID" Type="varbinary" MaxLength="85" />
+          <Property Name="Program" Type="nvarchar" MaxLength="100" />
+          <Property Name="Version" Type="nvarchar" MaxLength="100" />
+          <Property Name="Path" Type="nvarchar" MaxLength="500" />
+          <Property Name="Debug" Type="bit" Nullable="false" />
+          <Property Name="CodeStatus" Type="tinyint" Nullable="false" />
+          <Property Name="Masquer" Type="bit" StoreGeneratedPattern="Computed" />
+          <Property Name="LoginStatus" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateStatus" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="CatchMe_Exception_Detail">
+          <Key>
+            <PropertyRef Name="CodeCatch" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="CodeCatch" Type="bigint" Nullable="false" />
+          <Property Name="Code" Type="bigint" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="HResult" Type="int" />
+          <Property Name="Source" Type="nvarchar" MaxLength="300" />
+          <Property Name="Exception" Type="nvarchar" MaxLength="300" />
+          <Property Name="StackTrace" Type="nvarchar(max)" />
+          <Property Name="HelpLink" Type="nvarchar" MaxLength="500" />
+          <Property Name="TargetSite" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CatchMe_Exception_Detail_Data">
+          <Key>
+            <PropertyRef Name="CodeCatch" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="CodeCatch" Type="bigint" Nullable="false" />
+          <Property Name="Code" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CatchMe_Exception_Screen">
+          <Key>
+            <PropertyRef Name="FileKey" />
+          </Key>
+          <Property Name="FileKey" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CodeCatch" Type="bigint" Nullable="false" />
+          <Property Name="Screen" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Ext" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mime" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatchMe_Exception_Variable">
+          <Key>
+            <PropertyRef Name="CodeCatch" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="CodeCatch" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CatchMe_Filter">
+          <Key>
+            <PropertyRef Name="Codefilter" />
+          </Key>
+          <Property Name="Codefilter" Type="bigint" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" />
+          <Property Name="Program" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProcessName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ComputerName" Type="nvarchar" MaxLength="250" />
+          <Property Name="CodeAction" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatchMe_ParamMail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="smtp" Type="nvarchar" MaxLength="50" />
+          <Property Name="default_exp" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CatchMe_Status">
+          <Key>
+            <PropertyRef Name="CodeStatus" />
+          </Key>
+          <Property Name="CodeStatus" Type="tinyint" Nullable="false" />
+          <Property Name="Libelle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Suivant" Type="nvarchar" MaxLength="100" />
+          <Property Name="Order" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CatchMe_Exception_Detail_Data_ToException">
+          <End Role="CatchMe_Exception" Type="Self.CatchMe_Exception" Multiplicity="1" />
+          <End Role="CatchMe_Exception_Detail_Data" Type="Self.CatchMe_Exception_Detail_Data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Exception">
+              <PropertyRef Name="CodeCatch" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception_Detail_Data">
+              <PropertyRef Name="CodeCatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatchMe_Exception_Detail_Data_ToException_Detail">
+          <End Role="CatchMe_Exception_Detail" Type="Self.CatchMe_Exception_Detail" Multiplicity="1" />
+          <End Role="CatchMe_Exception_Detail_Data" Type="Self.CatchMe_Exception_Detail_Data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Exception_Detail">
+              <PropertyRef Name="CodeCatch" />
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception_Detail_Data">
+              <PropertyRef Name="CodeCatch" />
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatchMe_Exception_Detail_ToException">
+          <End Role="CatchMe_Exception" Type="Self.CatchMe_Exception" Multiplicity="1" />
+          <End Role="CatchMe_Exception_Detail" Type="Self.CatchMe_Exception_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Exception">
+              <PropertyRef Name="CodeCatch" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception_Detail">
+              <PropertyRef Name="CodeCatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatchMe_Exception_Screen_ToException">
+          <End Role="CatchMe_Exception" Type="Self.CatchMe_Exception" Multiplicity="1" />
+          <End Role="CatchMe_Exception_Screen" Type="Self.CatchMe_Exception_Screen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Exception">
+              <PropertyRef Name="CodeCatch" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception_Screen">
+              <PropertyRef Name="CodeCatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatchMe_Exception_ToStatus">
+          <End Role="CatchMe_Status" Type="Self.CatchMe_Status" Multiplicity="1" />
+          <End Role="CatchMe_Exception" Type="Self.CatchMe_Exception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Status">
+              <PropertyRef Name="CodeStatus" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception">
+              <PropertyRef Name="CodeStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatchMe_Exception_Variable_ToException">
+          <End Role="CatchMe_Exception" Type="Self.CatchMe_Exception" Multiplicity="1" />
+          <End Role="CatchMe_Exception_Variable" Type="Self.CatchMe_Exception_Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Exception">
+              <PropertyRef Name="CodeCatch" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception_Variable">
+              <PropertyRef Name="CodeCatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SysAppWindowsModelStoreContainer">
+          <EntitySet Name="CatchMe_Exception" EntityType="Self.CatchMe_Exception" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatchMe_Exception_Detail" EntityType="Self.CatchMe_Exception_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatchMe_Exception_Detail_Data" EntityType="Self.CatchMe_Exception_Detail_Data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatchMe_Exception_Screen" EntityType="Self.CatchMe_Exception_Screen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatchMe_Exception_Variable" EntityType="Self.CatchMe_Exception_Variable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatchMe_Filter" EntityType="Self.CatchMe_Filter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatchMe_ParamMail" EntityType="Self.CatchMe_ParamMail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatchMe_Status" EntityType="Self.CatchMe_Status" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CatchMe_Exception_Detail_Data_ToException" Association="Self.FK_CatchMe_Exception_Detail_Data_ToException">
+            <End Role="CatchMe_Exception" EntitySet="CatchMe_Exception" />
+            <End Role="CatchMe_Exception_Detail_Data" EntitySet="CatchMe_Exception_Detail_Data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatchMe_Exception_Detail_Data_ToException_Detail" Association="Self.FK_CatchMe_Exception_Detail_Data_ToException_Detail">
+            <End Role="CatchMe_Exception_Detail" EntitySet="CatchMe_Exception_Detail" />
+            <End Role="CatchMe_Exception_Detail_Data" EntitySet="CatchMe_Exception_Detail_Data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatchMe_Exception_Detail_ToException" Association="Self.FK_CatchMe_Exception_Detail_ToException">
+            <End Role="CatchMe_Exception" EntitySet="CatchMe_Exception" />
+            <End Role="CatchMe_Exception_Detail" EntitySet="CatchMe_Exception_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatchMe_Exception_Screen_ToException" Association="Self.FK_CatchMe_Exception_Screen_ToException">
+            <End Role="CatchMe_Exception" EntitySet="CatchMe_Exception" />
+            <End Role="CatchMe_Exception_Screen" EntitySet="CatchMe_Exception_Screen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatchMe_Exception_ToStatus" Association="Self.FK_CatchMe_Exception_ToStatus">
+            <End Role="CatchMe_Status" EntitySet="CatchMe_Status" />
+            <End Role="CatchMe_Exception" EntitySet="CatchMe_Exception" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatchMe_Exception_Variable_ToException" Association="Self.FK_CatchMe_Exception_Variable_ToException">
+            <End Role="CatchMe_Exception" EntitySet="CatchMe_Exception" />
+            <End Role="CatchMe_Exception_Variable" EntitySet="CatchMe_Exception_Variable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SysAppWindowsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CatchMe_Exception_Detail">
+          <Key>
+            <PropertyRef Name="CodeCatch" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="CodeCatch" Type="Int64" Nullable="false" />
+          <Property Name="Code" Type="Int64" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Source" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HelpLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TargetSite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HResult" Type="Int32" />
+          <NavigationProperty Name="CatchMe_Exception" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_Detail_ToException" FromRole="CatchMe_Exception_Detail" ToRole="CatchMe_Exception" />
+          <NavigationProperty Name="CatchMe_Exception_Detail_Data" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_Detail_Data_ToException_Detail" FromRole="CatchMe_Exception_Detail" ToRole="CatchMe_Exception_Detail_Data" />
+          <Property Name="Exception" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CatchMe_Exception_Variable">
+          <Key>
+            <PropertyRef Name="CodeCatch" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="CodeCatch" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CatchMe_Exception" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_Variable_ToException" FromRole="CatchMe_Exception_Variable" ToRole="CatchMe_Exception" />
+        </EntityType>
+        <EntityType Name="CatchMe_Filter">
+          <Key>
+            <PropertyRef Name="Codefilter" />
+          </Key>
+          <Property Name="Codefilter" Type="Int64" Nullable="false" />
+          <Property Name="ApplicationId" Type="Int32" />
+          <Property Name="Program" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProcessName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CodeAction" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CatchMe_Exception_Detail" EntityType="Self.CatchMe_Exception_Detail" />
+          <EntitySet Name="CatchMe_Exception_Variable" EntityType="Self.CatchMe_Exception_Variable" />
+          <EntitySet Name="CatchMe_Filter" EntityType="Self.CatchMe_Filter" />
+          <EntitySet Name="CatchMe_Exception" EntityType="SysAppWindowsModel.CatchMe_Exception" />
+          <AssociationSet Name="FK_CatchMe_Exception_Detail_ToException" Association="SysAppWindowsModel.FK_CatchMe_Exception_Detail_ToException">
+            <End Role="CatchMe_Exception" EntitySet="CatchMe_Exception" />
+            <End Role="CatchMe_Exception_Detail" EntitySet="CatchMe_Exception_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatchMe_Exception_Variable_ToException" Association="SysAppWindowsModel.FK_CatchMe_Exception_Variable_ToException">
+            <End Role="CatchMe_Exception" EntitySet="CatchMe_Exception" />
+            <End Role="CatchMe_Exception_Variable" EntitySet="CatchMe_Exception_Variable" />
+          </AssociationSet>
+          <EntitySet Name="CatchMe_Exception_Detail_Data" EntityType="SysAppWindowsModel.CatchMe_Exception_Detail_Data" />
+          <AssociationSet Name="FK_CatchMe_Exception_Detail_Data_ToException" Association="SysAppWindowsModel.FK_CatchMe_Exception_Detail_Data_ToException">
+            <End Role="CatchMe_Exception" EntitySet="CatchMe_Exception" />
+            <End Role="CatchMe_Exception_Detail_Data" EntitySet="CatchMe_Exception_Detail_Data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatchMe_Exception_Detail_Data_ToException_Detail" Association="SysAppWindowsModel.FK_CatchMe_Exception_Detail_Data_ToException_Detail">
+            <End Role="CatchMe_Exception_Detail" EntitySet="CatchMe_Exception_Detail" />
+            <End Role="CatchMe_Exception_Detail_Data" EntitySet="CatchMe_Exception_Detail_Data" />
+          </AssociationSet>
+          <EntitySet Name="CatchMe_Exception_Screen" EntityType="SysAppWindowsModel.CatchMe_Exception_Screen" />
+          <AssociationSet Name="FK_CatchMe_Exception_Screen_ToException" Association="SysAppWindowsModel.FK_CatchMe_Exception_Screen_ToException">
+            <End Role="CatchMe_Exception" EntitySet="CatchMe_Exception" />
+            <End Role="CatchMe_Exception_Screen" EntitySet="CatchMe_Exception_Screen" />
+          </AssociationSet>
+          <EntitySet Name="CatchMe_Status" EntityType="SysAppWindowsModel.CatchMe_Status" />
+          <AssociationSet Name="FK_CatchMe_Exception_ToStatus" Association="SysAppWindowsModel.FK_CatchMe_Exception_ToStatus">
+            <End Role="CatchMe_Status" EntitySet="CatchMe_Status" />
+            <End Role="CatchMe_Exception" EntitySet="CatchMe_Exception" />
+          </AssociationSet>
+          <EntitySet Name="CatchMe_ParamMail" EntityType="SysAppWindowsModel.CatchMe_ParamMail" />
+          </EntityContainer>
+        <EntityType Name="CatchMe_Exception">
+          <Key>
+            <PropertyRef Name="CodeCatch" />
+          </Key>
+          <Property Name="CodeCatch" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ApplicationId" Type="Int32" />
+          <Property Name="UrgenceLevel" Type="Int16" />
+          <Property Name="Method" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="sourceFilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="sourceLineNumber" Type="Int32" Nullable="false" />
+          <Property Name="CurrentPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProcessName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="OsVersion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OsServicePack" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OsPlatform" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SID" Type="Binary" MaxLength="85" FixedLength="false" />
+          <Property Name="Program" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Masquer" Type="Boolean" />
+          <NavigationProperty Name="CatchMe_Exception_Detail" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_Detail_ToException" FromRole="CatchMe_Exception" ToRole="CatchMe_Exception_Detail" />
+          <NavigationProperty Name="CatchMe_Exception_Variable" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_Variable_ToException" FromRole="CatchMe_Exception" ToRole="CatchMe_Exception_Variable" />
+          <NavigationProperty Name="CatchMe_Exception_Detail_Data" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_Detail_Data_ToException" FromRole="CatchMe_Exception" ToRole="CatchMe_Exception_Detail_Data" />
+          <NavigationProperty Name="CatchMe_Exception_Screen" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_Screen_ToException" FromRole="CatchMe_Exception" ToRole="CatchMe_Exception_Screen" />
+          <Property Name="Debug" Type="Boolean" Nullable="false" />
+          <Property Name="CodeStatus" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="CatchMe_Status" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_ToStatus" FromRole="CatchMe_Exception" ToRole="CatchMe_Status" />
+          <Property Name="LoginStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateStatus" Type="DateTime" Precision="7" />
+        </EntityType>
+        <Association Name="FK_CatchMe_Exception_Detail_ToException">
+          <End Type="SysAppWindowsModel.CatchMe_Exception" Role="CatchMe_Exception" Multiplicity="1" />
+          <End Type="SysAppWindowsModel.CatchMe_Exception_Detail" Role="CatchMe_Exception_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Exception">
+              <PropertyRef Name="CodeCatch" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception_Detail">
+              <PropertyRef Name="CodeCatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatchMe_Exception_Variable_ToException">
+          <End Type="SysAppWindowsModel.CatchMe_Exception" Role="CatchMe_Exception" Multiplicity="1" />
+          <End Type="SysAppWindowsModel.CatchMe_Exception_Variable" Role="CatchMe_Exception_Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Exception">
+              <PropertyRef Name="CodeCatch" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception_Variable">
+              <PropertyRef Name="CodeCatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CatchMe_Exception_Detail_Data">
+          <Key>
+            <PropertyRef Name="CodeCatch" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="CodeCatch" Type="Int64" Nullable="false" />
+          <Property Name="Code" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CatchMe_Exception" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_Detail_Data_ToException" FromRole="CatchMe_Exception_Detail_Data" ToRole="CatchMe_Exception" />
+          <NavigationProperty Name="CatchMe_Exception_Detail" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_Detail_Data_ToException_Detail" FromRole="CatchMe_Exception_Detail_Data" ToRole="CatchMe_Exception_Detail" />
+        </EntityType>
+        <Association Name="FK_CatchMe_Exception_Detail_Data_ToException">
+          <End Type="SysAppWindowsModel.CatchMe_Exception" Role="CatchMe_Exception" Multiplicity="1" />
+          <End Type="SysAppWindowsModel.CatchMe_Exception_Detail_Data" Role="CatchMe_Exception_Detail_Data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Exception">
+              <PropertyRef Name="CodeCatch" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception_Detail_Data">
+              <PropertyRef Name="CodeCatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatchMe_Exception_Detail_Data_ToException_Detail">
+          <End Type="SysAppWindowsModel.CatchMe_Exception_Detail" Role="CatchMe_Exception_Detail" Multiplicity="1" />
+          <End Type="SysAppWindowsModel.CatchMe_Exception_Detail_Data" Role="CatchMe_Exception_Detail_Data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Exception_Detail">
+              <PropertyRef Name="CodeCatch" />
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception_Detail_Data">
+              <PropertyRef Name="CodeCatch" />
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CatchMe_Exception_Screen">
+          <Key>
+            <PropertyRef Name="FileKey" />
+          </Key>
+          <Property Name="FileKey" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeCatch" Type="Int64" Nullable="false" />
+          <Property Name="Screen" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Ext" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mime" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CatchMe_Exception" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_Screen_ToException" FromRole="CatchMe_Exception_Screen" ToRole="CatchMe_Exception" />
+        </EntityType>
+        <Association Name="FK_CatchMe_Exception_Screen_ToException">
+          <End Type="SysAppWindowsModel.CatchMe_Exception" Role="CatchMe_Exception" Multiplicity="1" />
+          <End Type="SysAppWindowsModel.CatchMe_Exception_Screen" Role="CatchMe_Exception_Screen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Exception">
+              <PropertyRef Name="CodeCatch" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception_Screen">
+              <PropertyRef Name="CodeCatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CatchMe_Status">
+          <Key>
+            <PropertyRef Name="CodeStatus" />
+          </Key>
+          <Property Name="CodeStatus" Type="Byte" Nullable="false" />
+          <Property Name="Libelle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Suivant" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CatchMe_Exception" Relationship="SysAppWindowsModel.FK_CatchMe_Exception_ToStatus" FromRole="CatchMe_Status" ToRole="CatchMe_Exception" />
+        </EntityType>
+        <Association Name="FK_CatchMe_Exception_ToStatus">
+          <End Type="SysAppWindowsModel.CatchMe_Status" Role="CatchMe_Status" Multiplicity="1" />
+          <End Type="SysAppWindowsModel.CatchMe_Exception" Role="CatchMe_Exception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatchMe_Status">
+              <PropertyRef Name="CodeStatus" />
+            </Principal>
+            <Dependent Role="CatchMe_Exception">
+              <PropertyRef Name="CodeStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CatchMe_ParamMail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="smtp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="default_exp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SysAppWindowsModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="CatchMe_Exception_Detail">
+            <EntityTypeMapping TypeName="SysAppWindowsModel.CatchMe_Exception_Detail">
+              <MappingFragment StoreEntitySet="CatchMe_Exception_Detail">
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="HResult" ColumnName="HResult" />
+                <ScalarProperty Name="CodeCatch" ColumnName="CodeCatch" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="HelpLink" ColumnName="HelpLink" />
+                <ScalarProperty Name="TargetSite" ColumnName="TargetSite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatchMe_Exception_Variable">
+            <EntityTypeMapping TypeName="SysAppWindowsModel.CatchMe_Exception_Variable">
+              <MappingFragment StoreEntitySet="CatchMe_Exception_Variable">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CodeCatch" ColumnName="CodeCatch" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatchMe_Filter">
+            <EntityTypeMapping TypeName="SysAppWindowsModel.CatchMe_Filter">
+              <MappingFragment StoreEntitySet="CatchMe_Filter">
+                <ScalarProperty Name="Codefilter" ColumnName="Codefilter" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="CodeAction" ColumnName="CodeAction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatchMe_Exception">
+            <EntityTypeMapping TypeName="SysAppWindowsModel.CatchMe_Exception">
+              <MappingFragment StoreEntitySet="CatchMe_Exception">
+                <ScalarProperty Name="DateStatus" ColumnName="DateStatus" />
+                <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+                <ScalarProperty Name="CodeStatus" ColumnName="CodeStatus" />
+                <ScalarProperty Name="Debug" ColumnName="Debug" />
+                <ScalarProperty Name="Masquer" ColumnName="Masquer" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="OsPlatform" ColumnName="OsPlatform" />
+                <ScalarProperty Name="OsServicePack" ColumnName="OsServicePack" />
+                <ScalarProperty Name="OsVersion" ColumnName="OsVersion" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="CurrentPath" ColumnName="CurrentPath" />
+                <ScalarProperty Name="sourceLineNumber" ColumnName="sourceLineNumber" />
+                <ScalarProperty Name="sourceFilePath" ColumnName="sourceFilePath" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="UrgenceLevel" ColumnName="UrgenceLevel" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CodeCatch" ColumnName="CodeCatch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatchMe_Exception_Detail_Data">
+            <EntityTypeMapping TypeName="SysAppWindowsModel.CatchMe_Exception_Detail_Data">
+              <MappingFragment StoreEntitySet="CatchMe_Exception_Detail_Data">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CodeCatch" ColumnName="CodeCatch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatchMe_Exception_Screen">
+            <EntityTypeMapping TypeName="SysAppWindowsModel.CatchMe_Exception_Screen">
+              <MappingFragment StoreEntitySet="CatchMe_Exception_Screen">
+                <ScalarProperty Name="Mime" ColumnName="Mime" />
+                <ScalarProperty Name="Ext" ColumnName="Ext" />
+                <ScalarProperty Name="Screen" ColumnName="Screen" />
+                <ScalarProperty Name="CodeCatch" ColumnName="CodeCatch" />
+                <ScalarProperty Name="FileKey" ColumnName="FileKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatchMe_Status">
+            <EntityTypeMapping TypeName="SysAppWindowsModel.CatchMe_Status">
+              <MappingFragment StoreEntitySet="CatchMe_Status">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Suivant" ColumnName="Suivant" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="CodeStatus" ColumnName="CodeStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatchMe_ParamMail">
+            <EntityTypeMapping TypeName="SysAppWindowsModel.CatchMe_ParamMail">
+              <MappingFragment StoreEntitySet="CatchMe_ParamMail">
+                <ScalarProperty Name="default_exp" ColumnName="default_exp" />
+                <ScalarProperty Name="smtp" ColumnName="smtp" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

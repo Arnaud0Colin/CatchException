@@ -1,0 +1,56 @@
+﻿@model WebCatchException.Models.ErreurModel
+@{
+    ViewBag.Title = "Erreur";
+}
+
+<h2>Vous venez de rencontrer une difficulté technique .. </h2>
+
+<div>
+
+</div>
+
+
+
+<div id="errorMessage">
+    @{
+
+        switch (Model.HttpStatusCode)
+        {
+            case 401:
+                <div class="form-group text-danger">
+                    <h3 class="">Attention ! Vos identifiants sont incorrects.</h3>
+                    <p> Votre identifiant est : <b>DOMTSE\<i class="text-info">"identifiant Windows*"</i></b>   (ex: <b>domtse\eca142</b>)  </p>
+                    <p> Pour la plupart du réseau cet identifiant se compose de : votre statut et le numéro de dépot, UE, PFC, ...  </p>
+                    <p>Votre mot de passe est celui de votre session Windows ( *que vous utilisez au démarrage de votre ordinateur).</p>
+                </div>
+                break;
+            case 404:
+                <div class="form-group text-danger">
+                    <p> Il est possible que cette page n'existe plus, ou qu'une erreur se soit glissée sur le site.  </p>
+                </div>
+                break;
+            case 500:
+                <div class="form-group text-danger">
+                    <p> L'erreur de serveur suivante a été rencontrée:  </p>
+                    <div>
+                        @Model.Exception.Message
+                    </div>
+                </div>
+                break;
+            default:
+                <div class="form-group text-danger">
+                    <p> Il est possible que cette page n'existe plus, ou qu'une erreur se soit glissée sur le site.  </p>
+                </div>
+                break;
+        }
+    }
+
+    <p>Si votre difficulté persiste merci de contacter la hotline.</p>
+
+</div>
+
+@Html.ActionLink("Retourner sur la page précédente", null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
+@Html.Display("|")
+
+@Html.ActionLink("Page d'accueil", "index", "Accueil", null, new { @class = "control-label" })
+

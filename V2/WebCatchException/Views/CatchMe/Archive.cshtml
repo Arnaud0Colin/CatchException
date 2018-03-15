@@ -1,0 +1,60 @@
+﻿@model  WebCatchException.Models.HomePage
+@using GridMvc.Html
+
+@{
+    ViewBag.Title = "Exception Manager";
+}
+
+<script src='@Scripts.Url("~/bundles/jquery")' async> </script>
+<script src='@Scripts.Url("~/bundles/GridMVC")' async> </script>
+<link href='@Styles.Url("~/Content/GridMVC")' rel='stylesheet' />
+
+
+
+
+
+@if (Model == null || Model.ListEx.Count() == 0)
+{
+    <div>
+        <h3>Aucune Exception.</h3>
+    </div>
+
+}
+else
+{
+
+    @Html.Grid(Model.ListEx).Named("ArchiveGrid").Columns(columns =>
+{
+columns.Add(c => c.CodeCatch).RenderValueAs(o => $"<span style='font-size:20px;' class='badge {o.GetStatusColor}'>{o.CodeCatch}</span>").Titled("N°").Encoded(false).Sanitized(false);
+columns.Add().RenderValueAs(o => o.Getrr).Filterable(false).Sortable(false).Encoded(false).Sanitized(false);
+columns.Add(c => c.ApplicationId).Css("text-right").RenderValueAs(o => $"{o.ApplicationId}").Titled("App");
+columns.Add(c => c.Program).RenderValueAs(o => o.Program).Titled("Programme").SetFilterWidgetType("ProgramFilterWidget");
+columns.Add(c => c.ComputerName).RenderValueAs(o => o.ComputerName).Titled("Ordinateur").SetFilterWidgetType("ComputerNameFilterWidget");
+//columns.Add(c => c.Login).RenderValueAs(o => o.Login).Titled("Account");
+columns.Add(c => c.Date).Titled("Date");
+columns.Add(c => c.CatchMe_Exception_Detail.FirstOrDefault().Exception).Titled("Exception").SetFilterWidgetType("ExceptionTypeFilterWidget");
+columns.Add(c => c.CodeStatus).RenderValueAs(o => o.GetLibelleStatus).Titled("Etat").SetFilterWidgetType("StatusFilterWidget"); ;
+columns.Add()
+.Encoded(false)
+.Sanitized(false)
+.SetWidth(30)
+.Css("hidden-xs") //hide on phones
+.RenderValueAs(o =>
+
+
+        @<b>
+            @Html.ActionLink("Voir", "Erreur", new { id = o.CodeCatch })
+
+
+        </b>);
+
+   }).WithPaging(50).Sortable(true).Filterable(true).WithMultipleFilters()
+
+
+
+
+
+
+    }
+
+

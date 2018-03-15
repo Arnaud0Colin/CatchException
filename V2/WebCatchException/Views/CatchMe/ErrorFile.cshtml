@@ -1,0 +1,44 @@
+﻿@model  WebCatchException.Models.ErrorFilePage
+
+@{
+    ViewBag.Title = "About";
+}
+
+
+@using (Html.BeginForm("ErrorFile","CatchMe", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Fichiers, new { @class = "control-label col-md-4" })
+        <div class="col-md-4">
+            @Html.DropDownListFor(model => model.Fichier, Model.ChargeFichier, "-- Choisir un fichier erreur --", new { @class = "Fullwidth", @id = "dlRaison" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Fichiers, new { @type = "file", @multiple = "false" , @accept = ".ErDump" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" name="Action" value="Voir" class="btn btn-default" />
+            <input type="submit" name="Action" value="Importer" class="btn btn-primary" />
+            <input type="submit" name="Action" value="Supprimer" class="btn btn-danger" />
+        </div>
+    </div>
+
+}
+
+
+
+@if (Model.MyEx != null)
+{
+    @Html.DisplayFor(model => model.MyEx)
+}
+
+
+
+
+<a href="@ViewBag.PreviousUrl">Revenir à la liste</a>

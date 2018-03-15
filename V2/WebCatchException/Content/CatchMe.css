@@ -1,0 +1,74 @@
+﻿.underline {
+  BORDER-BOTTOM: black 2px solid; }
+
+#imageresource {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+
+.MargTop {
+  margin-top: 35px; }
+
+.Urgence {
+  border-color: #e3e3e3; }
+  .Urgence .panel-heading {
+    color: #e3e3e3;
+    background-color: #e3e3e3;
+    border-color: #e3e3e3; }
+
+.Urgence1 {
+  border-color: #cc0000; }
+  .Urgence1 .panel-heading {
+    color: #cc0000;
+    background-color: #cc0000;
+    border-color: #cc0000; }
+
+.Urgence2 {
+  border-color: #00CC00; }
+  .Urgence2 .panel-heading {
+    color: #00CC00;
+    background-color: #00CC00;
+    border-color: #00CC00; }
+
+.Urgence3 {
+  border-color: #0000FF; }
+  .Urgence3 .panel-heading {
+    color: #0000FF;
+    background-color: #0000FF;
+    border-color: #0000FF; }
+
+.Urgence4 {
+  border-color: #0000FF; }
+  .Urgence4 .panel-heading {
+    color: #0000FF;
+    background-color: #0000FF;
+    border-color: #0000FF; }
+
+.Urgence5 {
+  border-color: #0000FF; }
+  .Urgence5 .panel-heading {
+    color: #0000FF;
+    background-color: #0000FF;
+    border-color: #0000FF; }
+
+.Urgence6 {
+  border-color: #0000FF; }
+  .Urgence6 .panel-heading {
+    color: #0000FF;
+    background-color: #0000FF;
+    border-color: #0000FF; }
+
+.Urgence7 {
+  border-color: #0000FF; }
+  .Urgence7 .panel-heading {
+    color: #0000FF;
+    background-color: #0000FF;
+    border-color: #0000FF; }
+
+.Urgence8 {
+  border-color: #0000FF; }
+  .Urgence8 .panel-heading {
+    color: #0000FF;
+    background-color: #0000FF;
+    border-color: #0000FF; }
+

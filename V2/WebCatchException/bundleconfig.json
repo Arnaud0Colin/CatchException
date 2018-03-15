@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "Scripts/gridmvc.customwidgets.min.js",
+    "inputFiles": [
+      "Scripts/gridmvc.customwidgets.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/gridmvc.min.js",
+    "inputFiles": [
+      "Scripts/gridmvc.js"
+    ]
+  }
+]

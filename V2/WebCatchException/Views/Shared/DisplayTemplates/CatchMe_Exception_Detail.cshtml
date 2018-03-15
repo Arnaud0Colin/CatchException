@@ -1,0 +1,44 @@
+﻿@model WebCatchException.Models.CatchMe_Exception_Detail
+
+<div class="row">
+    <h4>@Html.DisplayFor(Model => Model.Exception)</h4>
+
+
+    <div class="panel">
+        <div class="panel-heading">
+            <strong>@Html.DisplayFor(Model => Model.Message)</strong>
+        </div>
+        <div class="panel-body">
+            @Html.Raw(Model.GetStackTrace)
+         </div>
+    </div>
+
+    <div class="">
+        @Html.DisplayFor(Model => Model.HelpLink)
+    </div>
+
+    <div class="">
+        @Html.DisplayFor(Model => Model.Source)
+    </div>
+
+    @*<div class="">
+        @Html.DisplayFor(Model => Model.Code)
+    </div>*@
+
+    @*<div class="">
+        @Html.DisplayFor(Model => Model.HResult)
+    </div>*@
+
+    <div class="">
+        @Html.Raw(Model.GetTargetSite)
+        @*@Html.DisplayFor(Model => Model.TargetSite)*@
+    </div>
+
+</div>
+    
+
+
+    @foreach (var rr in Model.CatchMe_Exception_Detail_Data)
+    {
+        @Html.DisplayFor(Model => rr)
+    }

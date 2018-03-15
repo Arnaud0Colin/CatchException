@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Content/CatchMe.css",
+    "inputFile": "Content/CatchMe.scss"
+  },
+  {
+    "outputFile": "Scripts/gridmvc.customwidgets.es5.js",
+    "inputFile": "Scripts/gridmvc.customwidgets.js"
+  }
+]
