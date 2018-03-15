@@ -6,6 +6,28 @@ The library capable to catch Unhandled exception and write exception on logging 
 I made this module to facilitate bug hunting, be really proactive, corrected the error before the user does not call you to report the problem.
 This program has basically made for enterprise who developer software internally
 
-[ReadMe of the Version 1](V1/readme.md)
 
-Version 2 will be Uploaded very soon.
+## Usage example
+
+### To catch Unhandled exception call the method in Main
+```c#
+#if !DEBUG
+    CatchMe.CatchUnhandled();
+#endif
+```
+
+### Report exceptions
+```c#
+try
+{
+ // Code
+}
+catch(Exception ex)
+{
+    CatchMe.WriteException(ex).Where().Write();
+}
+```
+
+## Previous Release
+
+[ReadMe of the Version 1](V1/readme.md)
