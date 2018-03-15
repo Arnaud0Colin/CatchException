@@ -9,15 +9,23 @@ This program has basically made for enterprise who developer software internally
 
 ## Usage example
 
+### To catch Unhandled exception call the method in Main
 ```c#
-    try
-    {
+#if !DEBUG
+    CatchMe.CatchUnhandled();
+#endif
+```
+
+### Report exceptions
+```c#
+try
+{
  // Code
-    }
-    catch(Exception ex)
-    {
-        CatchMe.WriteException(ex).Where().Write();
-    }
+}
+catch(Exception ex)
+{
+    CatchMe.WriteException(ex).Where().Write();
+}
 ```
 
 ## Previous Release
