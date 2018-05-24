@@ -27,7 +27,6 @@ catch(Exception ex)
     CatchMe.WriteException(ex).Where().Write();
 }
 ```
-
 ## Previous Release
 
-[ReadMe of the Version 1](V1/readme.md)
+[ReadMe of the Version 1](/V1/README.md)
